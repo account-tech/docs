@@ -13,16 +13,30 @@
 
 ## Move Framework
 
-* [Page 2](move-framework/page-2.md)
+* [Concepts](move-framework/concepts/README.md)
+  * [Smart Accounts](move-framework/concepts/smart-accounts.md)
+  * [Intents](move-framework/concepts/intents.md)
+  * [Actions](move-framework/concepts/actions.md)
+  * [Dependencies](move-framework/concepts/dependencies.md)
+
+***
+
+* [Implementation](implementation/README.md)
+  * [Smart Account](implementation/smart-account.md)
+  * [Intent and Action](implementation/intent-and-action.md)
 
 ## Move Registry
 
-* [Page 3](move-registry/page-3.md)
+* [Multisig](move-registry/multisig.md)
+
+***
+
+* [DAO](dao.md)
 
 ## Typescript Library
 
-* [Page 4](typescript-library/page-4.md)
+* [Untitled](typescript-library/untitled.md)
 
 ## Typescript SDKs
 
-* [Page 5](typescript-sdks/page-5.md)
+* [Untitled](typescript-sdks/untitled.md)
