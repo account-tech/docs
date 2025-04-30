@@ -4,7 +4,12 @@
 
 ## Overview
 
-* [Page 1](overview/page-1.md)
+* [Context](overview/context.md)
+* [Stack Components](overview/stack-components.md)
+
+***
+
+* [Design Philosophy](design-philosophy.md)
 
 ## Move Framework
 
