@@ -8,7 +8,7 @@ Smart Accounts are represented by shared objects, defined in the `account.move` 
 * extension (any dependent module can add dynamic fields with assets and data)
 * additional data (the framework does not require specific fields)
 
-These aspects are defined in the module implementing a smart account.
+These aspects are defined in the module implementing a smart account, we call it the "Config Module".
 
 ```rust
 public struct Account<Config> has key, store {
