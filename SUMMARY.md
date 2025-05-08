@@ -18,6 +18,7 @@
   * [Intents](move-framework/concepts/intents.md)
   * [Actions](move-framework/concepts/actions.md)
   * [Dependencies](move-framework/concepts/dependencies.md)
+  * [Managed Assets](move-framework/concepts/managed-assets.md)
 
 ***
 
