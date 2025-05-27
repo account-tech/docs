@@ -19,12 +19,14 @@
   * [Actions](move-framework/concepts/actions.md)
   * [Dependencies](move-framework/concepts/dependencies.md)
   * [Managed Assets](move-framework/concepts/managed-assets.md)
+  * [User](move-framework/concepts/user.md)
 
 ***
 
 * [Implementation](implementation/README.md)
   * [Smart Account](implementation/smart-account.md)
   * [Intent and Action](implementation/intent-and-action.md)
+* [Packages](packages.md)
 
 ## Move Registry
 

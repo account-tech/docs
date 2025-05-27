@@ -1,6 +1,6 @@
 # Implementation
 
-In the following sections, we detail how to implement your own smart account type as well as your own intents and actions.
+In the following sections, we detail how to implement your own smart account type as well as your own intents and actions, using our macros.
 
 Smart accounts can power (almost) any kind of app. We implemented a Multisig and a DAO version, but it could be anything you can dream of! Think AI agent, shops, gaming accounts, possibilities are endless. account.tech just gives you predefined building primitives that you can leverage in your own Move packages.
 

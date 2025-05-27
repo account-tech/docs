@@ -54,3 +54,39 @@ public struct History has copy, drop, store {
 ```
 
 By allowing unverified dependencies, members of an account can add arbitrary packages as dependencies. This allows developers to use their own code to interact with an Account.
+
+### VersionWitness
+
+In Move, there is no way to know which package, module or function is being called. `TxContext` provide very little information, so we had to come up with a new pattern to track package versions and their addresses.
+
+The "Version Witness" is a Witness that can be instantiated anywhere within a package and guarantees provenance by wrapping the package id.
+
+```rust
+public struct VersionWitness has copy, drop {
+    // package id where the witness has been created
+    package_addr: address,
+}
+```
+
+In a package dependent from account.tech, such a module must be defined:
+
+* a Witness is defined for each of the package versions, similar to the UpgradeCap version
+* the latest Witness is used in a `current()` package-only function that returns a `VersionWitness`&#x20;
+* this type is then used in certain functions and checked against the Account dependencies&#x20;
+
+```rust
+module my_module::version;
+
+use account_protocol::version_witness::{Self, VersionWitness};
+
+// define a new version struct for each new version of the package
+public struct V1() has drop;
+// public struct V2() has drop; when upgrading
+
+public(package) fun current(): VersionWitness {
+    version_witness::new(V1()) // modify with the new version struct
+}
+
+```
+
+With this design, it is guaranteed that the VersionWitness for a given package object can only be instantiated within this same package object, effectively replicating the Witness pattern at the package level.
