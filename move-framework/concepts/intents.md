@@ -1,10 +1,10 @@
 # Intents
 
-An intent is a operation processed on chain in 3 steps:
+An intent is an operation processed on-chain in three steps:
 
-1. a **request** builds and adds the intent to the Account
-2. the **resolution** happens as defined in the "Config module" (e.g. approve to reach threshold)
-3. once the `Outcome` meets the requirements, the intent can be **executed**
+1. A **request** builds and adds the intent to the Account
+2. The **resolution** happens as defined in the "Config module" (e.g., approve to reach threshold)
+3. Once the `Outcome` meets the requirements, the intent can be **executed**
 
 ```rust
 public struct Intents has store {
@@ -15,9 +15,9 @@ public struct Intents has store {
 }
 ```
 
-The `Intents` struct keeps track of the objects being used in intents. This is to prevent merging and splitting on coins that are requested, but also state modifications on any owned object.
+The `Intents` struct tracks the objects being used in intents. This prevents merging and splitting operations on coins that are requested, as well as state modifications on any owned object.
 
-The inner bag holds the `Intent`s that might have different Outcome types.
+The inner bag holds the `Intent`s that may have different Outcome types.
 
 ```rust
 public struct Intent<Outcome> has store {
@@ -50,23 +50,23 @@ public struct Intent<Outcome> has store {
 
 #### Intent type
 
-Each intent interface has an associated "intent type" represented by a [Witness](https://move-book.com/programmability/witness-pattern.html). This field serves two purposes. It facilitates intents parsing within SDKs and front-ends, and it ensures the cohesion of the intent interface.&#x20;
+Each intent interface has an associated "intent type" represented by a [Witness](https://move-book.com/programmability/witness-pattern.html). This field serves two purposes: it facilitates intent parsing within SDKs and front-ends, and it ensures the cohesion of the intent interface.
 
-The functions implementing the intent must use a Witness to ensure proper execution of the intent. This Witness is saved within the intent upon request. It is then checked during execution to ensure the correct function is called. Since the Witness has drop only ability, it cannot be used in malicious functions.  &#x20;
+The functions implementing the intent must use a Witness to ensure proper execution of the intent. This Witness is saved within the intent upon request and is then checked during execution to ensure the correct function is called. Since the Witness has only the `drop` ability, it cannot be used in malicious functions.
 
 #### Role
 
-Roles are defined per intent module, meaning that two intents defined in the same module will have the same role. A role looks like `package_id::module_name`.
+Roles are defined per intent module, meaning that two intents defined in the same module will have the same role. A role follows the format `package_id::module_name`.
 
-This value allows for a more granular resolution of an intent. Global resolution rules can be set for an account and different rules can be defined for each of the roles.&#x20;
+This value allows for more granular resolution of an intent. Global resolution rules can be set for an account, and different rules can be defined for each of the roles.
 
 {% hint style="info" %}
-For instance, in our Multisig implementation of the Smart Account framework, we define a global threshold. Then there are different and lower thresholds for selected roles. Each intent has a gauge for the global threshold and the one for its matching role. All Multisig members can increase the global gauge by approving the intent, but only members with the right role can increase its gauge. The first threshold to be reached (global or role) enables intent execution.
+For instance, in our Multisig implementation of the Smart Account framework, we define a global threshold. Then there are different and lower thresholds for selected roles. Each intent has a gauge for the global threshold and one for its matching role. All Multisig members can increase the global gauge by approving the intent, but only members with the appropriate role can increase its gauge. The first threshold to be reached (global or role) enables intent execution.
 {% endhint %}
 
 #### Params
 
-In the same idea, all intents have common parameters (key, description, creation\_time, execution\_times, expiration\_time). To reduce boilerplate, a `Param` object is constructed beforehand and passed in the request function. The fields of Params are held in a dynamic field, so that if the `Intent` type must evolve, interface signatures can remain the same.
+Similarly, all intents have common parameters (key, description, creation_time, execution_times, expiration_time). To reduce boilerplate, a `Params` object is constructed beforehand and passed to the request function. The fields of Params are held in a dynamic field, so that if the `Intent` type must evolve, interface signatures can remain the same.
 
 ```rust
 public struct Params has key, store {
@@ -84,13 +84,13 @@ public struct ParamsFieldsV1 has copy, drop, store {
 
 #### Recurring intents
 
-execution\_times is a vector of timestamps in ascending order. An intent can be executed when the first timestamp is in the past. It is removed and the intent can be re-executed as many times as there are timestamps available.&#x20;
+`execution_times` is a vector of timestamps in ascending order. An intent can be executed when the first timestamp is in the past. It is removed and the intent can be re-executed as many times as there are timestamps available.
 
 Once the vector is empty, the Intent can be safely destroyed.
 
 #### Deletion
 
-Regardless of its resolution status, an Intent can be destroyed if expiration\_time is in the past. This is an additional security measure in case of a malicious account member.
+Regardless of its resolution status, an Intent can be destroyed if `expiration_time` is in the past. This is an additional security measure in case of a malicious account member.
 
 #### Actions
 
@@ -104,4 +104,4 @@ Intents are composed of multiple actions that are stacked together upon request 
 
 Similarly to `Account`, the `Intent` type has a generic `Outcome` field. This is where the intent resolution status is tracked. The Account interface can define one or more outcome types depending on how the intents should be resolved.
 
-To keep the intent interfaces as generic as possible, this type is instantiated before requesting an intent and passed as an argument.&#x20;
+To keep the intent interfaces as generic as possible, this type is instantiated before requesting an intent and passed as an argument.

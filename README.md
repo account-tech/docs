@@ -1,8 +1,8 @@
 ---
 description: >-
-  Welcome to the account.tech docs, where you'll discover how to build the most
-  powerful and robust Web3 applications using our new Smart Account stack on
-  Sui!
+  Welcome to the account.tech documentation, where you'll discover how to build
+  powerful and robust Web3 applications using our comprehensive Smart Account
+  stack on Sui.
 icon: hand-wave
 cover: .gitbook/assets/gitbookbanner.png
 coverY: 0
@@ -10,13 +10,13 @@ coverY: 0
 
 # Account.tech Documentation
 
-Account.tech unlocks Sui's potential through a comprehensive tech stack built on four pillars: a Smart Account Framework transforming addresses into powerful programmable accounts, Account Abstraction Infrastructure simplifying complex implementations, an Enterprise Product Suite starting with next-generation Multisig, and a Rich Ecosystem driving network effects.
+Account.tech unlocks Sui's full potential through a comprehensive technology stack built on four foundational pillars: a Smart Account Framework that transforms addresses into powerful programmable accounts, Account Abstraction Infrastructure that simplifies complex implementations, an Enterprise Product Suite beginning with next-generation Multisig solutions, and a Rich Ecosystem that drives network effects.
 
 {% hint style="info" %}
-Head over to [our github organization](https://github.com/account-tech) to explore the different related repositories.
+Visit [our GitHub organization](https://github.com/account-tech) to explore the different related repositories.
 {% endhint %}
 
-Before diving into our tech stack, learn more about our philosophy, why we created this new Smart Account standard on Sui, what it is and what it aims to solve.
+Before diving into our technology stack, learn more about our philosophy, why we created this new Smart Account standard on Sui, what it encompasses, and the problems it aims to solve.
 
 {% content-ref url="broken-reference" %}
 [Broken link](broken-reference)

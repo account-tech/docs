@@ -1,16 +1,16 @@
 # Intent and Action
 
-You can define new actions and intents in addition to the ones provided by the framework. The new smart account could provide new features that would need new intents (e.g. an intent to configurate this specific `Account<Config>` object).
+You can define new actions and intents in addition to the ones provided by the framework. The new smart account could provide new features that would need new intents (e.g., an intent to configure this specific `Account<Config>` object).
 
 You might also want to make certain functions in your own packages executable by smart accounts, such as Multisigs. For this to work, you have to define these functions as intents.
 
 ### Action
 
-An action should be unopionated. It represents the smallest unit of an on-chain operation. For instance, in the case of a "Mint" action, we only mint and return the coin, another action will take care of using it.
+An action should be unopinionated. It represents the smallest unit of an on-chain operation. For instance, in the case of a "Mint" action, we only mint and return the coin; another action will take care of using it.
 
 All actions are implemented in the same way. Let's go through the "Transfer" action module.
 
-After defining the action struct as explained in [this section](../move-framework/concepts/actions.md), there must be three functions.&#x20;
+After defining the action struct as explained in [this section](../move-framework/concepts/actions.md), there must be three functions:
 
 1. `new_` should instantiate the action directly within an Intent
 2. `do_` takes an Executable to read the action and execute required operations
@@ -52,13 +52,13 @@ public fun delete_transfer(expired: &mut Expired) {
 
 ### Intent
 
-Intent interfaces necessitate only two functions. The framework also provides macros for facilitated implementation. You can find them [here](https://github.com/account-tech/move-framework/blob/main/packages/protocol/sources/interfaces/intent_interface.move).&#x20;
+Intent interfaces require only two functions. The framework also provides macros for facilitated implementation. You can find them [here](https://github.com/account-tech/move-framework/blob/main/packages/protocol/sources/interfaces/intent_interface.move).
 
 Actions compose intents. They are stacked and executed sequentially, in the order they have been added. In this example, the object is first withdrawn, then transferred. Notice that we have to loop over the execute function since we need to declare the object type being transferred upfront. This is abstracted in the SDK.
 
-`build_intent!` allows to create, compose and add an intent to an account in one call.
+`build_intent!` allows you to create, compose and add an intent to an account in one call.
 
-`process_intent!` helps to read the Executable to process the action assuming the action function called matches the next action to be processed in the Executable (here Withdraw then Transfer).&#x20;
+`process_intent!` helps to read the Executable to process the action, assuming the action function called matches the next action to be processed in the Executable (here Withdraw then Transfer).
 
 ```rust
 public fun request_withdraw_and_transfer<Config, Outcome: store>(
@@ -109,11 +109,11 @@ public fun execute_withdraw_and_transfer<Config, Outcome: store, T: key + store>
 
 ### Composability
 
-Intents are high level functions that are meant to be called by end users. Their implementation ensure proper execution. In particular, the "Intent Witness" enforce the "execute" function matching the previously called "request" function to be called for executing the intent. Intents are not composable functions as we usually see on Sui.
+Intents are high-level functions that are meant to be called by end users. Their implementation ensures proper execution. In particular, the "Intent Witness" enforces that the "execute" function matching the previously called "request" function is called for executing the intent. Intents are not composable functions as we usually see on Sui.
 
-Composability happens at a lower level, with actions. Any actions can be grouped together to compose an intent. But again, this takes place in Move - not within PTBs - to ensure intended execution.&#x20;
+Composability happens at a lower level, with actions. Any actions can be grouped together to compose an intent. But again, this takes place in Move—not within PTBs—to ensure intended execution.
 
-Not all actions are meant to be composed with others though. For instance, we don't see any use case that would require composing an "ConfigDeps" action with another one. In this case, there is no need to define an interface for the action which can be directly processed within the intent interface. Make sure not to forget the function to delete the action struct.
+Not all actions are meant to be composed with others though. For instance, we don't see any use case that would require composing a "ConfigDeps" action with another one. In this case, there is no need to define an interface for the action which can be directly processed within the intent interface. Make sure not to forget the function to delete the action struct.
 
 ```rust
 /// Creates an intent to update the dependencies of the account by directly adding the action

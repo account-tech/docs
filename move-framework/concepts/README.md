@@ -4,11 +4,11 @@ Smart Accounts represent an advanced form of Sui accounts. They are designed wit
 
 An intent is an on-chain operation that is executed in multiple steps:
 
-* a user creates an intent to execute one or more actions sequentially
-* the intent is resolved according to the Smart Account's `Config`
-* when the conditions are met, the intent can then be executed by anyone
+* A user creates an intent to execute one or more actions sequentially
+* The intent is resolved according to the Smart Account's `Config`
+* When the conditions are met, the intent can then be executed by anyone
 
-An action is defined as a unique operation on Sui (withdraw, transfer, etc), represented by structs that are stacked in a heterogeneous map in an Intent. &#x20;
+An action is defined as a unique operation on Sui (withdraw, transfer, etc.), represented by structs that are stacked in a heterogeneous map within an Intent.
 
 Each Smart Account type has a specific `Config` and its associated intents have a specific `Outcome`.
 
