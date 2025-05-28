@@ -1,8 +1,8 @@
 ---
 description: >-
   We are committed to building products aligned with the original Web3 ethos we
-  cherish: transparency, accessibility, and collaboration. Our stack reflects
-  these principles even more profoundly on the technical side.
+  cherish: transparency, accessibility and collaboration. Our stack reflects
+  these principles and more on the technical side
 ---
 
 # Design Philosophy

@@ -21,6 +21,7 @@ public struct TransferAction has store {
 ```
 
 Each action type implements three core functions:
-- **Add**: Creates and adds the action to an intent
-- **Execute**: Performs the action's operation during intent execution
-- **Delete**: Cleans up the action when the intent is destroyed
+
+* **New**: Creates and adds the action to an intent
+* **Do**: Performs the action's operation during intent execution
+* **Delete**: Cleans up the action when the intent is destroyed
