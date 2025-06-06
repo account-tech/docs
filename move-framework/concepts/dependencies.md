@@ -31,7 +31,7 @@ public struct Deps has copy, drop, store {
 
 ### Extensions
 
-This struct includes an `unverified_allowed` flag. By default, an Account can only add verified packages as dependencies. The account.tech team curates a collection of these verified packages in the `Extensions` shared object.
+The `Deps` struct includes an `unverified_allowed` flag. By default, an Account can only add verified packages as dependencies. The account.tech team curates a collection of these verified packages in the `Extensions` shared object.
 
 ```rust
 /// A list of verified and whitelisted packages

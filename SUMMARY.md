@@ -13,6 +13,7 @@
 
 ## Move Framework
 
+* [Packages](move-framework/packages.md)
 * [Concepts](move-framework/concepts/README.md)
   * [Smart Accounts](move-framework/concepts/smart-accounts.md)
   * [Intents](move-framework/concepts/intents.md)
@@ -26,7 +27,6 @@
 * [Implementation](implementation/README.md)
   * [Smart Account](implementation/smart-account.md)
   * [Intent and Action](implementation/intent-and-action.md)
-* [Packages](packages.md)
 
 ## Move Registry
 
