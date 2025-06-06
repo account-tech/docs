@@ -58,6 +58,8 @@ The functions implementing the intent must use a Witness to ensure proper execut
 
 Roles are defined per intent module, meaning that two intents defined in the same module will have the same role. A role follows the format `package_id::module_name`.
 
+Some of the roles can be divided by "bucket" or "managed asset". For instance, each Vault has a different role with the form: `package_id::module_name::vault_name`.
+
 This value allows for more granular resolution of an intent. Global resolution rules can be set for an account, and different rules can be defined for each of the roles.
 
 {% hint style="info" %}
@@ -66,7 +68,7 @@ For instance, in our Multisig implementation of the Smart Account framework, we 
 
 #### Params
 
-Similarly, all intents have common parameters (key, description, creation_time, execution_times, expiration_time). To reduce boilerplate, a `Params` object is constructed beforehand and passed to the request function. The fields of Params are held in a dynamic field, so that if the `Intent` type must evolve, interface signatures can remain the same.
+Similarly, all intents have common parameters (key, description, creation\_time, execution\_times, expiration\_time). To reduce boilerplate, a `Params` object is constructed beforehand and passed to the request function. The fields of Params are held in a dynamic field, so that if the `Intent` type must evolve, interface signatures can remain the same.
 
 ```rust
 public struct Params has key, store {
